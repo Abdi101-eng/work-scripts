@@ -194,7 +194,13 @@ def find_pairs_memory_optimal(arr, target_sum):
     
     return pairs
 
+# Time Complexity: O(n * k) where n is string length
 
+# O(n) for generating substrings
+# O(k) for each substring comparison/hashing
+
+
+# Space Complexity: O(n) for storing substrings
 def find_most_frequent_substring(s, k):
     """
     Find the substring of length k with maximum occurrences
@@ -221,6 +227,38 @@ def find_most_frequent_substring(s, k):
     # Find substring with maximum frequency
     max_substring = max(substring_count.items(), key=lambda x: x[1])
     return max_substring
+
+def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        count = {}
+        freq = [[] for i in range(len(nums) + 1)]
+
+        for num in nums:
+            count[num] = 1 + count.get(num, 0)
+        for num, cnt in count.items():
+            freq[cnt].append(num)
+        
+        res = []
+        for i in range(len(freq) - 1, 0, -1):
+            for num in freq[i]:
+                res.append(num)
+                if len(res) == k:
+                    return res
+
+def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        count = {}
+        freq = [[] for i in range(len(nums) + 1)]
+
+        for num in nums:
+            count[num] = 1 + count.get(num, 0)
+        for num, cnt in count.items():
+            freq[cnt].append(num)
+        
+        res = []
+        for i in range(len(freq) - 1, 0, -1):
+            for num in freq[i]:
+                res.append(num)
+                if len(res) == k:
+                    return res                   
 
 
 
